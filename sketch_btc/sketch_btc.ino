@@ -2,7 +2,7 @@ const int TRAIN_SPEED_PWM = 3;
 const int TRAIN_DIR = 12;
 
 const int DELAY_MILLI_SEC = 10;
-const float SPEED_DELTA_PER_SEC = 40.0f;
+const float SPEED_DELTA_PER_SEC = 240.0f;
 
 String inputString = "";         // a string to hold incoming data
 boolean stringComplete = false;  // whether the string is complete
@@ -19,17 +19,18 @@ void setup() {
 
 void loop() {
   if (stringComplete) {
-    stringComplete = false;
-
     int index = inputString.indexOf("(");
+    int index2 = -1;
     if(index != -1) {
-      int index2 = inputString.indexOf(")", index);
-      if(index2 != -1) {
-        String inputCommand = inputString.substring(index+1, index2);
-        String resultStr = processInput(inputCommand);
-        Serial.println(resultStr);
-        inputString = inputString.substring(index2+1);
-      }
+      index2 = inputString.indexOf(")", index);
+    }
+    if(index != -1 && index2 != -1) {
+      String inputCommand = inputString.substring(index+1, index2);
+      String resultStr = processInput(inputCommand);
+      Serial.println(resultStr);
+      inputString = inputString.substring(index2+1);
+    } else {
+      stringComplete = false;
     }
   }
   
@@ -79,8 +80,14 @@ void processSpeedChange() {
   if(reqSpeed != int(curSpeed)) {
     if(reqSpeed > curSpeed) {
       curSpeed += (SPEED_DELTA_PER_SEC*DELAY_MILLI_SEC/1000.0f);
+      if(curSpeed >= reqSpeed) {
+        curSpeed = reqSpeed;
+      }
     } else {
       curSpeed -= (SPEED_DELTA_PER_SEC*DELAY_MILLI_SEC/1000.0f);
+      if(curSpeed <= reqSpeed) {
+        curSpeed = reqSpeed;
+      }
     }
     analogWrite(TRAIN_SPEED_PWM, abs(curSpeed));
     digitalWrite(TRAIN_DIR, curSpeed>=0);
