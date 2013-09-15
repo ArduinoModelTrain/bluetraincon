@@ -1,16 +1,100 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    <RelativeLayout
+        android:id="@+id/relativeLayoutBluetooth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textViewTitleBluetooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bluetooth status" />
+
+        <Button 
+            android:id="@+id/buttonScan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+			android:text="Scan"
+            />
+        
+        <TextView
+            android:id="@+id/textViewStatusBluetooth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+			android:layout_below="@id/textViewTitleBluetooth"
+			android:layout_toLeftOf="@id/buttonScan"
+			android:layout_alignParentLeft="true"
+			android:padding="10dp"
+			android:background="#11000000"
+            android:text="Bluetooth status contents" />
+        
+        
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/textViewTitleDirection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Direction" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupDirection"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewTitleDirection" >
+
+            <RadioButton
+                android:id="@+id/radioDirForward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Forward" />
+
+            <RadioButton
+                android:id="@+id/radioDirBackward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Backward" />
+        </RadioGroup>
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+        
+		<TextView
+            android:id="@+id/textViewTitleSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Speed" />
+
+		<SeekBar
+		    android:id="@+id/seekBarSpeed"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content" 
+		    android:layout_below="@id/textViewTitleSpeed"
+		    android:max="255"
+		    />
+        
+    </RelativeLayout>
+        
+</LinearLayout>
