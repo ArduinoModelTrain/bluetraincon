@@ -9,38 +9,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <RelativeLayout
-        android:id="@+id/relativeLayoutBluetooth"
+    <TextView
+        android:id="@+id/textViewTitleBluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bluetooth_status" />
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+            
         <TextView
-            android:id="@+id/textViewTitleBluetooth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bluetooth status" />
-
-        <Button 
+            android:id="@+id/textViewStatusBluetooth"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@color/color_not_connected"
+            android:gravity="left|center_vertical"
+            android:padding="10dp"
+            />
+        <Button
             android:id="@+id/buttonScan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-			android:text="Scan"
-            />
-        
-        <TextView
-            android:id="@+id/textViewStatusBluetooth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-			android:layout_below="@id/textViewTitleBluetooth"
-			android:layout_toLeftOf="@id/buttonScan"
-			android:layout_alignParentLeft="true"
-			android:padding="10dp"
-			android:background="#11000000"
-            android:text="Bluetooth status contents" />
-        
-        
-    </RelativeLayout>
+            android:text="@string/scan" />
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -51,7 +45,7 @@
             android:id="@+id/textViewTitleDirection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Direction" />
+            android:text="@string/direction" />
 
         <RadioGroup
             android:id="@+id/radioGroupDirection"
@@ -65,13 +59,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Forward" />
+                android:text="@string/forward" />
 
             <RadioButton
                 android:id="@+id/radioDirBackward"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Backward" />
+                android:text="@string/backward" />
         </RadioGroup>
 
     </RelativeLayout>
@@ -85,7 +79,7 @@
             android:id="@+id/textViewTitleSpeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Speed" />
+            android:text="@string/speed" />
 
 		<SeekBar
 		    android:id="@+id/seekBarSpeed"

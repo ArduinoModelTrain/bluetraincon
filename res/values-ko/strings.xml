@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" >
+
+    <string name="action_settings">세팅</string>
+
+	<!--  BluetoothChat -->
+    <string name="scan">검색</string>
+    <string name="bluetooth_status">블루투스 상태</string>
+    <string name="direction">방향</string>
+    <string name="forward">전진</string>
+    <string name="backward">후진</string>
+    <string name="speed">속도</string>
+    <string name="not_connected">블루투스 장치에 연결되지 않았습니다.</string>
+    <string name="bt_not_enabled_leaving">블루투스를 켜지 못했습니다. 프로그램을 종료합니다.</string>
+    <string name="title_connecting">연결중...</string>
+    <string name="title_connected_to"><xliff:g id="device_name">%1$s</xliff:g> 장치에 연결됨</string>
+    <string name="title_not_connected">연결되지 않음</string>
+
+    <!--  DeviceListActivity -->
+    <string name="scanning">장치 검색중...</string>
+    <string name="select_device">블루투스 장치 선택</string>
+    <string name="none_paired">페어링된 장치 없음</string>
+    <string name="none_found">장치를 찾을 수 없음</string>
+    <string name="title_paired_devices">페어링된 장치들</string>
+    <string name="title_other_devices">연결가능한 다른 장치들</string>
+    <string name="button_scan">블루투스 장치 검색</string>
+    
+</resources>

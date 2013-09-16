@@ -150,23 +150,24 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+		//getMenuInflater().inflate(R.menu.main, menu);
+		//return true;
+		return false;
 	}
 	
     private void setupChat() {
         Log.d(TAG, "setupChat()");
 
-
         // Initialize the BluetoothChatService to perform bluetooth connections
         mChatService = new BluetoothChatService(this, mHandler);
     }
     
-    private final void setStatus(int resId) {
-    	setStatus(getString(resId));
+    private final void setStatus(int resId, int textViewColorId) {
+    	setStatus(getString(resId), textViewColorId);
     }
-    private final void setStatus(CharSequence text) {
+    private final void setStatus(CharSequence text, int textViewColorId) {
     	mTextViewBluetoothStatus.setText(text);
+    	mTextViewBluetoothStatus.setBackgroundColor(getResources().getColor(textViewColorId));
     }
     
     /**
@@ -198,16 +199,16 @@ public class MainActivity extends Activity {
                 if(D) Log.i(TAG, "MESSAGE_STATE_CHANGE: " + msg.arg1);
                 switch (msg.arg1) {
                 case BluetoothChatService.STATE_CONNECTED:
-                    setStatus(getString(R.string.title_connected_to, mConnectedDeviceName));
+                    setStatus(getString(R.string.title_connected_to, mConnectedDeviceName), R.color.color_connected);
                     resetControllers();
                     mLastSentData = "";
                     break;
                 case BluetoothChatService.STATE_CONNECTING:
-                    setStatus(R.string.title_connecting);
+                    setStatus(R.string.title_connecting, R.color.color_not_connected);
                     break;
                 case BluetoothChatService.STATE_LISTEN:
                 case BluetoothChatService.STATE_NONE:
-                    setStatus(R.string.title_not_connected);
+                    setStatus(R.string.title_not_connected, R.color.color_not_connected);
                     break;
                 }
                 break;
